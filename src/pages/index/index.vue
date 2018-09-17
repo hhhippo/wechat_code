@@ -17,27 +17,54 @@
     <form class="form-container">
       <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
       <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
+      <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
+
+      <p>账号</p> <input type="text"  class="form-control" v-model="loginName" />
+      <p>密码</p> <input type="password"   class="form-control" v-model="loginPassword" />
+      <a  class="counter" @click="yanzheng">验证</a>
+      <a href="/pages/counter/main" class="counter">录入</a>
     </form>
-    <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
   </div>
 </template>
-
 <script>
+
 import card from '@/components/card'
 
 export default {
+  props: ['loginName', 'loginPassword'],
   data () {
     return {
       motto: 'Hello World',
       userInfo: {}
     }
   },
-
   components: {
     card
   },
 
   methods: {
+    yanzheng () {
+      console.log(this.loginName + '||' + this.loginPassword)
+      console.log('loginName:' + this.loginName)
+      console.log('loginPassword' + this.loginPassword)
+
+      // this.$axios({
+      //   method: 'post',
+      //   url: 'http://http://localhost:8081/User/login',
+      //   data: {
+      //     loginName: this.loginName,
+      //     loginPassword: this.loginPassword
+      //   }
+      // })
+      this.$axios.post('http://39.107.64.77:8888/get_data/', {
+        params: {
+          name: this.loginName
+        }
+      })
+        .then(function (respone) {
+          console.log(respone)
+        })
+    },
     bindViewTap () {
       const url = '../logs/main'
       wx.navigateTo({ url })
@@ -74,9 +101,9 @@ export default {
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+  width: 128px;
+  height: 128px;
+  margin: 20px;
   border-radius: 50%;
 }
 
@@ -85,7 +112,7 @@ export default {
 }
 
 .usermotto {
-  margin-top: 150px;
+  margin-top: 50px;
 }
 
 .form-control {
@@ -103,3 +130,7 @@ export default {
   border: 1px solid blue;
 }
 </style>
+
+
+
+
