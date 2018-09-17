@@ -27,9 +27,8 @@
   </div>
 </template>
 <script>
-
 import card from '@/components/card'
-
+import axios from 'axios'
 export default {
   props: ['loginName', 'loginPassword'],
   data () {
@@ -44,6 +43,7 @@ export default {
 
   methods: {
     yanzheng () {
+      axios.defaults.headers.common['X-Requested-with'] = 'XMLHttpRequest'
       console.log(this.loginName + '||' + this.loginPassword)
       console.log('loginName:' + this.loginName)
       console.log('loginPassword' + this.loginPassword)
@@ -56,13 +56,33 @@ export default {
       //     loginPassword: this.loginPassword
       //   }
       // })
-      this.$axios.post('http://39.107.64.77:8888/get_data/', {
+      axios.defaults.adapter = function (config) {
+        return new Promise((resolve, reject) => {
+          console.log(config)
+          wx.request({
+            url: config.url,
+            data: {
+              name: config.params.name
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function (res) {
+              console.log(res.data)
+            }
+          })
+        })
+      }
+      axios.get('http://39.107.64.77:8888/get_data/', {
         params: {
           name: this.loginName
         }
       })
         .then(function (respone) {
           console.log(respone)
+        })
+        .catch(function (error) {
+          console.log(error)
         })
     },
     bindViewTap () {
@@ -130,7 +150,3 @@ export default {
   border: 1px solid blue;
 }
 </style>
-
-
-
-
