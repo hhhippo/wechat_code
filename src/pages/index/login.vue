@@ -9,29 +9,15 @@
 
 <script>
   import axios from 'axios'
-  import card from '@/components/card'
   export default {
     props: ['loginName', 'loginPassword'],
     name: 'login',
-    components: {
-      card
-    },
-
     methods: {
       yanzheng () {
         axios.defaults.headers.common['X-Requested-with'] = 'XMLHttpRequest'
         console.log(this.loginName + '||' + this.loginPassword)
         console.log('loginName:' + this.loginName)
         console.log('loginPassword' + this.loginPassword)
-
-        // this.$axios({
-        //   method: 'post',
-        //   url: 'http://http://localhost:8081/User/login',
-        //   data: {
-        //     loginName: this.loginName,
-        //     loginPassword: this.loginPassword
-        //   }
-        // })
         axios.defaults.adapter = function (config) {
           return new Promise((resolve, reject) => {
             console.log(config)

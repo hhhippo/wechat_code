@@ -2,19 +2,18 @@
   <div class="container" @click="clickHandle('test click', $event)">
 
     <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <div class="userinfo-nickname">
-        <card :text="userInfo.nickName"></card>
-      </div>
+    <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
+    <div class="userinfo-nickname">
+      <card :text="userInfo.nickName"></card>
     </div>
-
+  </div>
+    <img src="../../../static/timg.jpg"/>
+    <login></login>
     <!--<div class="usermotto">-->
       <!--<div class="user-motto">-->
         <!--<card :text="motto"></card>-->
       <!--</div>-->
     <!--</div>-->
-    <img src="../../../static/timg.jpg"/>
-    <login></login>
     <!--<form class="form-container">-->
       <!--<input type="text" class="form-control" v-model="motto" placeholder="v-model" />-->
       <!--<input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />-->
@@ -44,53 +43,6 @@ export default {
   },
 
   methods: {
-    yanzheng () {
-      axios.defaults.headers.common['X-Requested-with'] = 'XMLHttpRequest'
-      console.log(this.loginName + '||' + this.loginPassword)
-      console.log('loginName:' + this.loginName)
-      console.log('loginPassword' + this.loginPassword)
-
-      // this.$axios({
-      //   method: 'post',
-      //   url: 'http://http://localhost:8081/User/login',
-      //   data: {
-      //     loginName: this.loginName,
-      //     loginPassword: this.loginPassword
-      //   }
-      // })
-      axios.defaults.adapter = function (config) {
-        return new Promise((resolve, reject) => {
-          console.log(config)
-          wx.request({
-            url: config.url,
-            data: {
-              loginName: config.params.loginName,
-              loginPassword: config.params.loginPassword
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: function (res) {
-              console.log(res.data)
-            }
-          })
-        })
-      }
-      axios.get('http://127.0.0.1:8081/User/login', {
-        params: {
-          loginName: this.loginName,
-          loginPassword: this.loginPassword
-        }
-      })
-        .then(function (respone) {
-          console.log(respone)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-      this.loginName = ''
-      this.loginPassword = ''
-    },
     bindViewTap () {
       const url = '../logs/main'
       wx.navigateTo({ url })
