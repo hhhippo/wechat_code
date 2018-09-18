@@ -7,7 +7,25 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "温馨小家",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar":{
+    "color": "#ffffff",
+    "backgroundColor": "#000000",
+    "selectedColor": "#c8ad45",
+    "borderStyle": "black",
+
+    "list":[
+      {
+        "pagePath": "pages/index/main",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/counter/main",
+        "text": "count"
+      }
+    ]
   }
+
 }

@@ -8,27 +8,29 @@
       </div>
     </div>
 
-    <div class="usermotto">
-      <div class="user-motto">
-        <card :text="motto"></card>
-      </div>
-    </div>
+    <!--<div class="usermotto">-->
+      <!--<div class="user-motto">-->
+        <!--<card :text="motto"></card>-->
+      <!--</div>-->
+    <!--</div>-->
+    <img src="../../../static/timg.jpg"/>
+    <login></login>
+    <!--<form class="form-container">-->
+      <!--<input type="text" class="form-control" v-model="motto" placeholder="v-model" />-->
+      <!--<input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />-->
+      <!--<a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>-->
 
-    <form class="form-container">
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-      <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
-
-      <p>账号</p> <input type="text"  class="form-control" v-model="loginName" />
-      <p>密码</p> <input type="password"   class="form-control" v-model="loginPassword" />
-      <a  class="counter" @click="yanzheng">验证</a>
-      <a href="/pages/counter/main" class="counter">录入</a>
-    </form>
+      <!--<p>账号</p> <input type="text"  class="form-control" v-model="loginName" />-->
+      <!--<p>密码</p> <input type="password"   class="form-control" v-model="loginPassword" />-->
+      <!--<a  class="counter" @click="yanzheng">验证</a>-->
+      <!--<a href="/login" class="counter">录入</a>-->
+    <!--</form>-->
   </div>
 </template>
 <script>
 import card from '@/components/card'
 import axios from 'axios'
+import login from './login'
 export default {
   props: ['loginName', 'loginPassword'],
   data () {
@@ -38,7 +40,7 @@ export default {
     }
   },
   components: {
-    card
+    card, login
   },
 
   methods: {
@@ -62,7 +64,8 @@ export default {
           wx.request({
             url: config.url,
             data: {
-              name: config.params.name
+              loginName: config.params.loginName,
+              loginPassword: config.params.loginPassword
             },
             header: {
               'content-type': 'application/json'
@@ -73,9 +76,10 @@ export default {
           })
         })
       }
-      axios.get('http://39.107.64.77:8888/get_data/', {
+      axios.get('http://127.0.0.1:8081/User/login', {
         params: {
-          name: this.loginName
+          loginName: this.loginName,
+          loginPassword: this.loginPassword
         }
       })
         .then(function (respone) {
@@ -84,6 +88,8 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+      this.loginName = ''
+      this.loginPassword = ''
     },
     bindViewTap () {
       const url = '../logs/main'
