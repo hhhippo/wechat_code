@@ -1,10 +1,28 @@
 <template>
   <form class="form-container">
-    <p>账号</p> <input type="text"  class="form-control" v-model="loginName" />
-    <p>密码</p> <input type="password"   class="form-control" v-model="loginPassword" />
-    <a  class="counter" @click="yanzheng">验证</a>
-    <a href="/pages/counter/main" class="counter">录入</a>
+    <div class="weui-cell weui-cell_input">
+      <div class="weui-cell__hd">
+        <div class="weui-label">账号</div>
+      </div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入账号" v-model="loginName" />
+      </div>
+    </div>
+    <div class="weui-cell weui-cell_input">
+      <div class="weui-cell__hd">
+        <div class="weui-label">密码</div>
+      </div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入密码" v-model="loginPassword" />
+      </div>
+    </div>
+    <!--<p>账号</p> <input type="text"  class="form-control" v-model="loginName" />-->
+    <!--<p>密码</p> <input type="password"   class="form-control" v-model="loginPassword" />-->
+        <button class="weui-btn mini-btn" type="primary" size="mini" @click="yanzheng">验证</button>
+        <button class="weui-btn mini-btn" type="default" size="mini">录入</button>
   </form>
+
+
 </template>
 
 <script>
@@ -108,11 +126,4 @@
     border: 1px solid #ccc;
   }
 
-  .counter {
-    display: inline-block;
-    margin: 10px auto;
-    padding: 5px 10px;
-    color: blue;
-    border: 1px solid blue;
-  }
 </style>
