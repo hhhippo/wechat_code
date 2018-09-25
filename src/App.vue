@@ -20,7 +20,9 @@ export default {
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-}
+}page {
+    height: 100%;
+ }
 /* this rule will be remove */
 * {
   transition: width 2s;
@@ -28,4 +30,5 @@ export default {
   -webkit-transition: width 2s;
   -o-transition: width 2s;
 }
+
 </style>

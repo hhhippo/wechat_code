@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/main",
     "pages/logs/main",
-    "pages/counter/main"
+    "pages/counter/main",
+    "pages/classify/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -11,20 +12,37 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar":{
-    "color": "#000000",
-    "backgroundColor": "#A5E3FF",
-    "selectedColor": "#ffffff",
-    "borderStyle": "black",
+    "color": "#858585",
+    "backgroundColor": "#ffffff",
+    "selectedColor": "#f0145a",
+    "borderStyle": "#000",
 
     "list":[
       {
         "pagePath": "pages/index/main",
+        "iconPath": "static/img/home.png",
+        "selectedIconPath": "static/img/home_select.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/counter/main",
-        "text": "count"
+        "iconPath": "static/img/cart.png",
+        "selectedIconPath": "static/img/cart_select.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/classify/main",
+        "iconPath": "static/img/classify.png",
+        "selectedIconPath": "static/img/classify_select.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/counter/main",
+        "iconPath": "static/img/mine.png",
+        "selectedIconPath": "static/img/mine_select.png",
+        "text": "我的"
       }
+
     ]
   }
 

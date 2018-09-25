@@ -18,8 +18,8 @@
     </div>
     <!--<p>账号</p> <input type="text"  class="form-control" v-model="loginName" />-->
     <!--<p>密码</p> <input type="password"   class="form-control" v-model="loginPassword" />-->
-        <button class="weui-btn mini-btn" type="primary" size="mini" @click="yanzheng">验证</button>
-        <button class="weui-btn mini-btn" type="default" size="mini">录入</button>
+        <button class="weui-btn mini-btn" type="primary"  @click="yanzheng">验证</button>
+        <button class="weui-btn mini-btn" type="default" >录入</button>
   </form>
 
 
