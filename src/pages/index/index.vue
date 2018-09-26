@@ -1,22 +1,38 @@
 <template>
-  <div class="container" @click="clickHandle('test click', $event)">
-    <img src="../../../static/timg.jpg"/>
-    <login></login>
+  <div class="inde-main">
+    <SearchBar></SearchBar>
+    <!--<img class="index-img" src="../../../static/img/index2.jpg"/>-->
+    <swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+      <block v-for="(item, index) in images" :index="index" :key="key">
+        <swiper-item>
+          <image :src="item.url" class="slide-image" mode="aspectFill"/>
+        </swiper-item>
+      </block>
+    </swiper>
   </div>
 </template>
+
 <script>
-import card from '@/components/card'
-import login from './login'
+import SearchBar from '@/components/SearchBar'
+import login from './'
 export default {
   props: ['loginName', 'loginPassword'],
   data () {
     return {
-      motto: 'Hello World',
-      userInfo: {}
+      images: [
+        {
+          url:
+            '/static/img/index2.jpg'
+        },
+        {
+          url:
+            '/static/img/index3.jpg'
+        }
+      ]
     }
   },
   components: {
-    card, login
+    SearchBar, login
   },
 
   methods: {
@@ -48,54 +64,31 @@ export default {
 </script>
 
 <style scoped>
-.userinfo {
+.index-img{
+  height: 300rpx;
+  width: 100%;
+}
+.index-main {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
-
-.userinfo-avatar {
-  width: 128px;
-  height: 128px;
-  margin: 20px;
-  border-radius: 50%;
+  .top-img{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+  }
+.message {
+  color: red;
+  padding: 10px;
+  text-align: center;
 }
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 50px;
-}
-
-.form-control {
-  display: block;
-  padding: 0 12px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-}
-
-.counter {
-  display: inline-block;
-  margin: 10px auto;
-  padding: 5px 10px;
-  color: blue;
-  border: 1px solid blue;
-}
-img{
-  border-radius: 20px;
-  height: 150px;
-  width: 200px;
-}
-.searchbar-result {
-  margin-top: 0;
-  font-size: 14px;
-}
-.searchbar-result:before {
-  display: none;
-}
-.weui-cell {
-  padding: 12px 15px 12px 35px;
+image {
+  height: 100%;
+  width: 100%;
 }
 </style>

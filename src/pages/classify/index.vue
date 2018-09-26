@@ -10,8 +10,8 @@
 
     <div class="nav-right">
         <div class="nav_right_container" v-if="level[index].ishaveChild">
-            <div v-for="children in level[index].children">
-                <div class="nav_right_item">
+            <div v-for="children in level[index].children" :key="children.child_id">
+                <div class="nav_right_item"  :data-index='index' :data-id='children.child_id' @click="commodity">
                   <image class='image' :src="children.image"></image>
                   <text class='text'>{{children.name}}</text>
                 </div>
@@ -154,6 +154,11 @@
         this.index = e.target.dataset.index
         console.log(e)
         console.log(e.target.dataset.index)
+      },
+      commodity (e) {
+        console.log(e)
+        console.log(e.target.dataset.index)
+        console.log(e.target.dataset.id)
       }
     }
   }

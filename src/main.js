@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import '../static/style/weui.css'
+import '../static/style/swiper.min.css'
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
